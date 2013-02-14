@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/glenn-brown/vu"
-	"github.com/glenn-brown/vu/examples/voronoi"
+	"github.com/glenn-brown/vu/eg/voronoi"
 	"math"
 	"math/rand"
 )
