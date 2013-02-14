@@ -49,11 +49,54 @@ func (a Point) Len() float64
 
 func (a Point) LenSquared() float64
 
+func (a Point) Max(b Point) Point
+    Return a point where each of X,Y,Z is the maximum value in input point a
+    or b.
+
+func (a Point) Min(b Point) Point
+    Return a point where each of X,Y,Z is the minimum value in input point a
+    or b.
+
 func (a Point) Sub(b Point) Point
+
+type Point3d struct{ X, Y, Z float64 }
+
+func Point3dNormal() Point3d
+    Return a random point from the Normal distribution.
+
+func (a Point3d) Add(b Point3d) Point3d
+
+func (a Point3d) Cross(b Point3d) Point3d
+
+func (a Point3d) Dot(b Point3d) float64
+
+func (a Point3d) Equals(b Point3d) bool
+
+func (a Point3d) Len() float64
+
+func (a Point3d) LenSquared() float64
+
+func (a Point3d) Max(b Point3d) Point3d
+    Return a point where each of X,Y,Z is the maximum value in input point a
+    or b.
+
+func (a Point3d) Min(b Point3d) Point3d
+    Return a point where each of X,Y,Z is the minimum value in input point a
+    or b.
+
+func (a Point3d) Sub(b Point3d) Point3d
 
 type Points []Point
 
+func (pp Points) Bounds() (min, max Point)
+    pp.Bounds() returns the minumum and maximum X,Y,Z values occuring in
+    Points pp.
+
 func (pp Points) Render()
+
+type Points3d []Point3d
+
+func (pp Points3d) Bounds() (min, max Point3d)
 
 type Polygon []Point
     A polygon is a list of vertices in clockwise order.
@@ -142,6 +185,14 @@ func Vbox(children ...Renderer) Renderer
 func Wiggle(child Renderer) Renderer
     Wiggle wiggles its child.
 
+type Scatter struct {
+    // contains filtered or unexported fields
+}
+
+func NewScatter(pp Points3d) *Scatter
+
+func (s *Scatter) Render(w, h, d float64)
+
 type Segment struct{ A, B Point }
 
 func (a Segment) Intersection(b Segment) *Point
@@ -167,5 +218,5 @@ func (w *Window) Render()
 
 SUBDIRECTORIES
 
-	examples
+	eg
 
